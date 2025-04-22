@@ -70,15 +70,59 @@
       transform: translateY(0);
       box-shadow: 0 2px 6px rgba(60, 131, 127, 0.2);
     }
+    
+    /* Tab expansion/contraction animation */
+    @media (min-width: 768px) {
+      .tab-section {
+        transition: width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+      }
+      
+      .tab-container:hover .tab-section-left {
+        width: 60%;
+      }
+      
+      .tab-container:hover .tab-section-right {
+        width: 40%;
+      }
+      
+      .tab-container:hover .tab-section-left.hovered {
+        width: 60%;
+      }
+      
+      .tab-container:hover .tab-section-right.hovered {
+        width: 60%;
+      }
+      
+      .tab-container:hover .tab-section-left:not(.hovered) {
+        width: 40%;
+      }
+      
+      .tab-container:hover .tab-section-right:not(.hovered) {
+        width: 40%;
+      }
+      
+      /* Divider animation */
+      .divider {
+        transition: left 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+      }
+      
+      .tab-container:hover .divider.left-hovered {
+        left: 60%;
+      }
+      
+      .tab-container:hover .divider.right-hovered {
+        left: 40%;
+      }
+    }
   </style>
 </head>
 <body class="bg-[#91BFBE] min-h-screen w-full flex items-center justify-center p-4 md:p-6">
 
   <!-- Main container with animations -->
-  <div class="flex flex-col md:flex-row w-full max-w-4xl bg-[#D6DEE4] rounded-lg shadow-xl overflow-hidden relative opacity-0 animate-fadeInUp" style="animation-delay: 0.2s;">
+  <div class="tab-container flex flex-col md:flex-row w-full max-w-4xl bg-[#D6DEE4] rounded-lg shadow-xl overflow-hidden relative opacity-0 animate-fadeInUp" style="animation-delay: 0.2s;">
     
     <!-- Left side with login card -->
-    <div class="w-full md:w-1/2 flex items-center justify-center p-6 md:p-8 relative">
+    <div id="leftSection" class="tab-section tab-section-left w-full md:w-1/2 flex items-center justify-center p-6 md:p-8 relative">
       <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 w-full max-w-md opacity-0 animate-fadeInUp" style="animation-delay: 0.5s;">
         <h2 class="text-2xl font-semibold text-[#3C837F] mb-6 text-center opacity-0 animate-fadeInUp" style="animation-delay: 0.7s;">Login</h2>
         <form class="space-y-5">
@@ -128,10 +172,10 @@
     </div>
     
     <!-- Thicker dividing line - visible only on desktop -->
-    <div class="hidden md:block absolute h-full w-[3px] bg-[#80A6A3]/40 left-1/2 top-0 z-10"></div>
+    <div id="divider" class="divider hidden md:block absolute h-full w-[3px] bg-[#80A6A3]/40 left-1/2 top-0 z-10"></div>
 
     <!-- Right side with image - properly contained -->
-    <div class="w-full md:w-1/2 h-60 md:h-auto relative">
+    <div id="rightSection" class="tab-section tab-section-right w-full md:w-1/2 h-60 md:h-auto relative">
       <img
         src="https://i.imgur.com/B5taLcA.jpeg"
         alt="Imagem decorativa"
@@ -153,6 +197,27 @@
           el.style.opacity = '1';
         });
       }, 100);
+      
+      // Tab expansion/contraction animation
+      const leftSection = document.getElementById('leftSection');
+      const rightSection = document.getElementById('rightSection');
+      const divider = document.getElementById('divider');
+      
+      // Left section hover
+      leftSection.addEventListener('mouseenter', () => {
+        leftSection.classList.add('hovered');
+        rightSection.classList.remove('hovered');
+        divider.classList.add('left-hovered');
+        divider.classList.remove('right-hovered');
+      });
+      
+      // Right section hover
+      rightSection.addEventListener('mouseenter', () => {
+        rightSection.classList.add('hovered');
+        leftSection.classList.remove('hovered');
+        divider.classList.add('right-hovered');
+        divider.classList.remove('left-hovered');
+      });
     });
     
     // Add ripple effect to button
