@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página de Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#91BFBE] min-h-screen w-full flex items-center justify-center p-4 md:p-6">
+
+  <!-- Main container with responsive width and height -->
+  <div class="flex flex-col md:flex-row w-full max-w-4xl bg-[#D6DEE4] rounded-lg shadow-xl overflow-hidden relative">
+    
+    <!-- Left side with login card -->
+    <div class="w-full md:w-1/2 flex items-center justify-center p-6 md:p-8 relative">
+      <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 w-full max-w-md">
+        <h2 class="text-2xl font-semibold text-[#3C837F] mb-6 text-center">Login</h2>
+        <form class="space-y-5">
+          <div>
+            <label class="block text-sm font-medium text-[#3C837F] mb-1.5" for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="w-full px-4 py-2.5 border border-[#91BFBE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#80A6A3] transition-colors"
+              placeholder="seuemail@exemplo.com"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-[#3C837F] mb-1.5" for="senha">Senha</label>
+            <input
+              type="password"
+              id="senha"
+              class="w-full px-4 py-2.5 border border-[#91BFBE] rounded-md focus:outline-none focus:ring-2 focus:ring-[#80A6A3] transition-colors"
+              placeholder="********"
+            />
+          </div>
+          <div class="flex items-center justify-between text-sm">
+            <div class="flex items-center">
+              <input id="remember" type="checkbox" class="h-4 w-4 text-[#3C837F] border-[#91BFBE] rounded focus:ring-[#80A6A3]">
+              <label for="remember" class="ml-2 text-gray-600">Lembrar-me</label>
+            </div>
+            <a href="#" class="text-[#3C837F] hover:text-[#80A6A3] transition-colors">Esqueceu a senha?</a>
+          </div>
+          <div>
+            <button
+              type="submit"
+              class="w-full bg-[#3C837F] text-white py-3 px-4 rounded-md hover:bg-[#80A6A3] transition duration-300 font-medium"
+            >
+              Entrar
+            </button>
+          </div>
+          <div class="text-center text-sm text-gray-600">
+            Não tem uma conta? <a href="#" class="text-[#3C837F] hover:text-[#80A6A3] font-medium transition-colors">Registre-se</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <!-- Dividing line - visible only on desktop -->
+    <div class="hidden md:block absolute h-full w-px bg-[#80A6A3]/30 left-1/2 top-0 z-10"></div>
+
+    <!-- Right side with image - properly contained -->
+    <div class="w-full md:w-1/2 h-60 md:h-auto relative">
+      <img
+        src="https://i.imgur.com/B5taLcA.jpeg"
+        alt="Imagem decorativa"
+        class="w-full h-full object-cover absolute inset-0"
+      />
+      <div class="absolute inset-0 bg-[#3C837F] bg-opacity-20"></div>
+    </div>
+
+    <!-- Dividing line - visible only on mobile -->
+    <div class="md:hidden absolute w-full h-px bg-[#80A6A3]/30 left-0 top-60 z-10"></div>
+
+  </div>
+
+</body>
+</html>
